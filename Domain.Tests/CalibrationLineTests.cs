@@ -4,23 +4,11 @@ namespace Domain.Tests
     public class CalibrationTests
     {
         [TestMethod]
-        public void GetFirstAndLastDigit()
+        [DataRow("1abc2", 12)]
+        [DataRow("aaaaoneaaaaa2", 12)]
+        [DataRow("eight99fhstbssrplmdlnonecmmqqnklb39nineoneightjz", 88)]
+        public void GetFirstAndLastDigit(string input, int expectedResult)
         {
-            var input = "1abc2";
-            var expectedResult = 12;
-
-            var line = new CalibrationLine(input);
-            int lineNumber = line.GetNumber();
-
-            Assert.AreEqual(expectedResult, lineNumber);
-        }
-
-        [TestMethod]
-        public void GetOneAsDigit()
-        {
-            var input = "aaaaoneaaaaa2";
-            var expectedResult = 12;
-
             var line = new CalibrationLine(input);
             int lineNumber = line.GetNumber();
 

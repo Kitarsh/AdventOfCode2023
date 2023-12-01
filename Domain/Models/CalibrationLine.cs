@@ -4,7 +4,7 @@ namespace Domain;
 
 public class CalibrationLine
 {
-    private const string PatternWithLetters = "[1-9]|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)";
+    private const string PatternWithLetters = "(?=([1-9]|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)))";
     private const string PatternWithoutLetters = "[1-9]";
     private string input;
 
@@ -26,10 +26,16 @@ public class CalibrationLine
     }
 
     private static char GetLastNumber(MatchCollection result)
-        => TransformToNumber(result.Last().Value);
+    {
+        var value = result.Last().Groups[1].Value;
+        return TransformToNumber(value);
+    }
 
     private static char GetFirstNumber(MatchCollection result)
-        => TransformToNumber(result.First().Value);
+    {
+        var value = result.First().Groups[1].Value;
+        return TransformToNumber(value);
+    }
 
     private static char TransformToNumber(string value)
     {
