@@ -26,6 +26,8 @@ namespace Domain.Tests
             Assert.AreEqual(0, thirdDraw.Blues);
             Assert.AreEqual(0, thirdDraw.Reds);
             Assert.AreEqual(2, thirdDraw.Greens);
+
+            Assert.AreEqual(48, game.Power);
         }
 
         [TestMethod]
@@ -41,6 +43,15 @@ namespace Domain.Tests
             int result = drawGame.SumGameIdWithLimit(redCubeLimit, greenCubeLimit, blueCubeLimit);
 
             Assert.AreEqual(8, result);
+        }
+
+        [TestMethod]
+        public void GetPowerSumOfDrawGame()
+        {
+            var lines = File.ReadAllLines("SampleInput.txt");
+            var drawGame = new DrawGame(lines);
+            int result = drawGame.SumPowersOfGames();
+            Assert.AreEqual(2286, result);
         }
     }
 }

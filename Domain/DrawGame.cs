@@ -15,5 +15,8 @@
 
         public int SumGameIdWithLimit(int redCubeLimit, int greenCubeLimit, int blueCubeLimit)
             => games.Where(game => game.RespectLimit(redCubeLimit, greenCubeLimit, blueCubeLimit)).Select(g => g.Id).Sum();
+
+        public int SumPowersOfGames()
+            => games.Sum(g => g.Power);
     }
 }
