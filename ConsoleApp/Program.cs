@@ -7,4 +7,4 @@ var input = File.ReadAllText("input.txt");
 
 var schematic = new Schematic(input);
 
-Console.WriteLine("The result is : {0}", schematic.GetSum());
+Console.WriteLine("The result is : {0}", schematic.GetGearSum());
